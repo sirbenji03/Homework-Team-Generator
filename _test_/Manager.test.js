@@ -1,32 +1,37 @@
+// dependencies
+const Manager = require('../lib/manager');
 
-   
-const Manager = require ('../lib/Manager');
+//initialize testing
 
-//name, email, id, role and school  name validation for manager
-const managerTest = new Manager ('joe', 'joe@gmail.com', 4 , 'Manager', 109)
-
-describe('Manager', () => {
-    it('has a name', () =>{
-        expect(managerTest.name).toEqual(expect.any(String))
-        expect(managerTest.name.length).toBeGreaterThan(2)
-
-    })
-    it('has an email id', () =>{
-        expect(managerTest.email).toEqual(expect.stringContaining('@'))
-    })
-
-    it('has an id that is a num', () => {
-        expect(managerTest.id).toEqual(expect.any(Number))
-    })
-
-    it('has a role of engineer', () => {
-        expect(managerTest.role).toBe('Manager')
-    })
-
-    it('has a office number', () => {
-        keys = Object.keys(managerTest)
-        optionKey = keys[4]
-        expect(optionKey).toBe('office')
-        expect(managerTest.office).toEqual(expect.any(Number))
-    })
-})
+describe("Manager", () => {
+    describe("Initialization", () => {
+        //object should return an empty string
+        it("should initiate an object", () => {
+            const obj = new Manager();
+            //We expect 'result' to equal object
+            expect(typeof(obj)).toEqual("object");
+        });
+    });
+     //create test for school object
+    describe("officeNumber", () => {
+        it("should create new officeNumber", () => {
+          const obj = new Manager("frank", 1, "frank@mail.com", 512);
+          expect(obj.officeNumber).toEqual(512);
+        });
+      });
+          //create test for getSchool method
+    describe("getOfficeNumber", () => {
+        it("can return school by getOfficeNumber method", () => {
+          const obj = new Manager("frank", 1, "frank@mail.com", 512);
+          expect(obj.getOfficeNumber()).toEqual(512);
+        });
+      });
+      //create test for getRole method
+    describe("getRole", () => {
+        it("can return role by getRole method", () => {
+          const role = "Manager";//must define role
+          const obj = new Manager("frank", 1, "frank@mail.com", 512);
+          expect(obj.getRole()).toEqual(role);
+        });
+      });
+});

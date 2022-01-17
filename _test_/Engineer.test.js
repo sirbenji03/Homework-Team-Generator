@@ -1,30 +1,37 @@
+// dependencies
+const Engineer = require('../lib/engineer');
 
-const engineerTest = new Engineer ('Benjamin', 'bamakye@gmail.com', 2, 'Engineer', 'BenjaminAmakye')
+//initialize testing
 
-describe("Engineer", () =>{
-    it('has a name', () =>{
-        expect(engineerTest.name).toEqual(expect.any(String))
-        expect(engineerTest.name.length).toBeGreaterThan(2)
-
-    })
-    it('has an email id', () =>{
-        expect(engineerTest.email).toEqual(expect.stringContaining('@'))
-    })
-
-    it('has an id that is a num', () => {
-        expect(engineerTest.id).toEqual(expect.any(Number))
-    })
-
-    it('has a role of engineer', () => {
-        expect(engineerTest.role).toBe('Engineer')
-    })
-
-    it('has a github username', () => {
-        keys = Object.keys(engineerTest)
-        optionKey = keys[4]
-        expect(optionKey).toBe('gitHub')
-        expect(engineerTest.gitHub).toEqual(expect.any(String))
-    })
-
-
-})
+describe("Engineer", () => {
+    describe("Initialization", () => {
+        //object should return an empty string
+        it("should initiate an object", () => {
+            const obj = new Engineer();
+            //We expect 'result' to equal object
+            expect(typeof(obj)).toEqual("object");
+        });
+    });
+     //create test for github object
+    describe("Github", () => {
+        it("should create new github", () => {
+          const obj = new Engineer("Benjamin",12, "benny.email@email", "sirbenji03");
+          expect(obj.github).toEqual("sirbenji03");
+        });
+      });
+          //create test for getGithub method
+    describe("getGithub", () => {
+        it("can return gitHub username by getGithub method", () => {
+          const obj = new Engineer("Benjamin", 12, "benny.email@email", "sirbenji03");
+          expect(obj.getGithub()).toEqual("sirbenji03");
+        });
+      });
+      //create test for getRole method
+    describe("getRole", () => {
+        it("can return role by getRole method", () => {
+          const role = "Engineer";//must define role
+          const obj = new Engineer("Benjamin", 12, "benny.email@email", "sirbenji03");
+          expect(obj.getRole()).toEqual(role);
+        });
+      });
+});

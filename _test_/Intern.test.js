@@ -1,30 +1,37 @@
-const Intern = require ('../lib/Intern');
+//dependencies
+const Intern = require('../lib/intern');
 
-//name, email, id, role and school  name validation for intern 
-const internTest = new Intern ('Pavad', 'pavad@gmail.com', 3 , 'Intern', 'OSU')
+//initialize testing
 
-describe('Intern', () => {
-    it('has a name', () =>{
-        expect(internTest.name).toEqual(expect.any(String))
-        expect(internTest.name.length).toBeGreaterThan(2)
-
-    })
-    it('has an email id', () =>{
-        expect(internTest.email).toEqual(expect.stringContaining('@'))
-    })
-
-    it('has an id that is a num', () => {
-        expect(internTest.id).toEqual(expect.any(Number))
-    })
-
-    it('has a role of engineer', () => {
-        expect(internTest.role).toBe('Intern')
-    })
-
-    it('has a school name', () => {
-        keys = Object.keys(internTest )
-        optionKey = keys[4]
-        expect(optionKey).toBe('school')
-        expect(internTest.school).toEqual(expect.any(String))
-    })
-})
+describe("Intern", () => {
+    describe("Initialization", () => {
+        //object should return an empty string
+        it("should initiate an object", () => {
+            const obj = new Intern();
+            //We expect 'result' to equal object
+            expect(typeof(obj)).toEqual("object");
+        });
+    });
+     //create test for school object
+    describe("School", () => {
+        it("should create new School", () => {
+          const obj = new Intern("eric", 101, "eric@mail.com", "OSU");
+          expect(obj.school).toEqual("OSU");
+        });
+      });
+          //create test for getSchool method
+    describe("getSchool", () => {
+        it("can return school by getSchool method", () => {
+          const obj = new Intern("eric", 101, "eric@mail.com", "OSU");
+          expect(obj.getSchool()).toEqual("OSU");
+        });
+      });
+      //create test for getRole method
+    describe("getRole", () => {
+        it("can return role by getRole method", () => {
+          const role = "Intern";//must define role
+          const obj = new Intern("eric", 101, "eric@mail.com", "OSU");
+          expect(obj.getRole()).toEqual(role);
+        });
+      });
+});
