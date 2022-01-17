@@ -16,14 +16,14 @@ describe("Employee", () => {
     //create test for name object
     describe("Name", () => {
       it("should create new name", () => {
-        const obj = new Employee("Billy");
-        expect(obj.name).toEqual("Billy");
+        const obj = new Employee("Benny");
+        expect(obj.name).toEqual("Benny");
       });
     });
     //create test for id object
     describe("Id", () => {
       it("should create new id", () => {
-        const obj = new Employee("Billy",12);
+        const obj = new Employee("Benny",12);
         expect(obj.id).toEqual(12);
       });
     });
